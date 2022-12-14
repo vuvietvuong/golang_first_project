@@ -38,9 +38,9 @@ func SetupServer(s *gorm.DB) Server {
 	}))
 
 	// Config route
+	r.POST("/login", controller.NewAuthController(s).Login)
 	v1 := r.Group("api/v1")
 	{
-		v1.POST("/login", controller.NewAuthController(s).Login)
 		userCtrl := controller.NewUserController(s)
 		users := v1.Group("/users")
 		{

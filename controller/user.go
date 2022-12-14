@@ -1,7 +1,7 @@
 package controller
 
 import (
-	user2 "golang_first_pj/domain/request/user"
+	user2 "golang_first_pj/domain"
 	"golang_first_pj/usecase"
 	"log"
 	"net/http"

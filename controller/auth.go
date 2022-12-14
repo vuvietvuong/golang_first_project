@@ -2,7 +2,7 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"golang_first_pj/domain/request/auth"
+	"golang_first_pj/domain"
 	"golang_first_pj/usecase"
 	"gorm.io/gorm"
 	"log"
@@ -20,7 +20,7 @@ func NewAuthController(db *gorm.DB) *AuthController {
 }
 
 func (c *AuthController) Login(ctx *gin.Context) {
-	user := auth.Auth{}
+	user := domain.Auth{}
 	err := ctx.ShouldBindJSON(&user)
 	if err != nil {
 		res := ctx.Error(err).SetType(gin.ErrorTypeBind)

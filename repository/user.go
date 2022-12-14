@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 	"fmt"
+	user2 "golang_first_pj/domain"
 	"golang_first_pj/domain/model"
-	user2 "golang_first_pj/domain/request/user"
 	"gorm.io/gorm"
 )
 

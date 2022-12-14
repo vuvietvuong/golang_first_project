@@ -2,9 +2,9 @@ package usecase
 
 import (
 	"context"
+	user2 "golang_first_pj/domain"
 	"golang_first_pj/domain/model"
-	user2 "golang_first_pj/domain/request/user"
-	"golang_first_pj/helper"
+	"golang_first_pj/pkg/crypto"
 	"golang_first_pj/repository"
 
 	"gorm.io/gorm"
@@ -35,7 +35,7 @@ func (uc *userUsecase) GetUser(ctx context.Context, id int) (user *model.User, e
 }
 
 func (uc *userUsecase) CreateUser(ctx context.Context, u user2.CreateUserReq) (err error) {
-	hash, _ := helper.HashPassword(u.Password)
+	hash := crypto.HashString(u.Password)
 	u.Password = hash
 	_, err = uc.UserRepo.CreateUser(ctx, u)
 	if err != nil {

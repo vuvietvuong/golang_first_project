@@ -1,8 +1,8 @@
 package response
 
 import (
+	"golang-basic/domain"
 	"net/http"
-	"peanut/domain"
 
 	"github.com/gin-gonic/gin"
 )

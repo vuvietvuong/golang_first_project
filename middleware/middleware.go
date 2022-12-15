@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"peanut/pkg/apierrors"
-	"peanut/pkg/response"
+	"golang-basic/pkg/apierrors"
+	"golang-basic/pkg/response"
 
 	"github.com/gin-gonic/gin"
 )

@@ -26,7 +26,7 @@ func main() {
 
 func dbConnect() *gorm.DB {
 	db, err := infra.PostgresOpen()
-	db.AutoMigrate(&model.User{})
+	db.AutoMigrate(&model.User{}, &model.Book{})
 	if err != nil {
 		log.Fatal("[main] DB connect error: ", err)
 	}

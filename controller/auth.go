@@ -3,9 +3,9 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"golang-basic/domain"
+	"golang-basic/pkg/response"
 	"golang-basic/usecase"
 	"gorm.io/gorm"
-	"log"
 	"net/http"
 )
 
@@ -21,24 +21,15 @@ func NewAuthController(db *gorm.DB) *AuthController {
 
 func (c *AuthController) Login(ctx *gin.Context) {
 	user := domain.Auth{}
-	err := ctx.ShouldBindJSON(&user)
-	if err != nil {
-		res := ctx.Error(err).SetType(gin.ErrorTypeBind)
-		log.Printf("Error: %v", res)
-		ctx.JSON(http.StatusBadRequest, gin.H{
-			"message": http.StatusText(http.StatusBadRequest),
-		})
+
+	if !bindJSON(ctx, &user) {
 		return
 	}
-	jwt, _ := c.Usecase.Login(ctx, user)
 
+	jwt, _ := c.Usecase.Login(ctx, user)
 	if jwt != nil {
-		ctx.JSON(http.StatusOK, gin.H{
-			"jwt": jwt,
-		})
+		response.OK(ctx, jwt)
 	} else {
-		ctx.JSON(http.StatusUnauthorized, gin.H{
-			"message": http.StatusText(http.StatusUnauthorized),
-		})
+		response.WithStatusCode(ctx, http.StatusUnauthorized, nil)
 	}
 }

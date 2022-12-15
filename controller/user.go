@@ -4,9 +4,10 @@ import (
 	"fmt"
 	user2 "golang-basic/domain"
 	"golang-basic/usecase"
+	"golang-basic/pkg/response"
 	"log"
 	"net/http"
-	"peanut/config"
+	"golang-basic/config"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -33,17 +34,14 @@ func (c *UserController) GetUser(ctx *gin.Context) {
 
 func (c *UserController) CreateUser(ctx *gin.Context) {
 	user := user2.CreateUserReq{}
-	err := ctx.ShouldBindJSON(&user)
-	if err != nil {
-		res := ctx.Error(err).SetType(gin.ErrorTypeBind)
-		log.Printf("Error: %v", res)
-		ctx.JSON(http.StatusBadRequest, gin.H{
-			"message": http.StatusText(http.StatusBadRequest),
-		})
+	if !bindJSON(ctx, &user) {
 		return
 	}
-	c.Usecase.CreateUser(ctx, user)
-	ctx.JSON(http.StatusCreated, gin.H{
-		"message": http.StatusText(http.StatusCreated),
-	})
+
+	err := c.Usecase.CreateUser(ctx, user)
+	if checkError(ctx, err) {
+		return
+	}
+
+	response.WithStatusCode(ctx, http.StatusCreated, nil)
 }

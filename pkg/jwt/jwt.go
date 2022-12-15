@@ -2,8 +2,8 @@ package jwt
 
 import (
 	"github.com/golang-jwt/jwt/v4"
-	"golang_first_pj/config"
-	"golang_first_pj/domain/model"
+	"golang-basic/config"
+	"golang-basic/domain/model"
 	"os"
 	"strconv"
 	"time"

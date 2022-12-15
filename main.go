@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"golang_first_pj/config"
-	"golang_first_pj/domain/model"
-	"golang_first_pj/infra"
+	"golang-basic/config"
+	"golang-basic/domain/model"
+	"golang-basic/infra"
 	"gorm.io/gorm"
 	"log"
 )

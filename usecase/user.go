@@ -2,10 +2,10 @@ package usecase
 
 import (
 	"context"
-	user2 "golang_first_pj/domain"
-	"golang_first_pj/domain/model"
-	"golang_first_pj/pkg/crypto"
-	"golang_first_pj/repository"
+	user2 "golang-basic/domain"
+	"golang-basic/domain/model"
+	"golang-basic/pkg/crypto"
+	"golang-basic/repository"
 
 	"gorm.io/gorm"
 )

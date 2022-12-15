@@ -1,7 +1,7 @@
 package infra
 
 import (
-	"golang_first_pj/controller"
+	"golang-basic/controller"
 	"net/http"
 	"time"
 

@@ -2,8 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"golang_first_pj/domain"
-	"golang_first_pj/usecase"
+	"golang-basic/domain"
+	"golang-basic/usecase"
 	"gorm.io/gorm"
 	"log"
 	"net/http"

@@ -5,14 +5,18 @@ import (
 	"golang-basic/config"
 	"golang-basic/domain/model"
 	"golang-basic/infra"
-	"gorm.io/gorm"
+	"golang-basic/pkg/i18n"
 	"log"
+
+	"gorm.io/gorm"
 )
 
 func main() {
 	fmt.Println("---- Hello world! ----")
 
 	config.Setup()
+
+	i18n.SetupI18n()
 
 	dbClient := dbConnect()
 	server := infra.SetupServer(dbClient)

@@ -1,11 +1,11 @@
 package infra
 
 import (
+	"golang-basic/controller"
 	"net/http"
 	"time"
 
-	"peanut/controller"
-	"peanut/middleware"
+	"golang-basic/middleware"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -45,6 +45,7 @@ func SetupServer(s *gorm.DB) Server {
 	}))
 
 	// Config route
+	r.POST("/login", controller.NewAuthController(s).Login)
 	v1 := r.Group("api/v1")
 	{
 		userCtrl := controller.NewUserController(s)

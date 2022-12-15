@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"golang-basic/config"
+	"golang-basic/domain/model"
+	"golang-basic/infra"
+	"golang-basic/pkg/i18n"
 	"log"
-	"peanut/config"
-	"peanut/infra"
-	"peanut/pkg/i18n"
 
 	"gorm.io/gorm"
 )
@@ -25,6 +26,7 @@ func main() {
 
 func dbConnect() *gorm.DB {
 	db, err := infra.PostgresOpen()
+	db.AutoMigrate(&model.User{})
 	if err != nil {
 		log.Fatal("[main] DB connect error: ", err)
 	}

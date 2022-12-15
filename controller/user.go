@@ -1,9 +1,10 @@
 package controller
 
 import (
-	"peanut/domain"
-	"peanut/pkg/response"
-	"peanut/usecase"
+	user2 "golang-basic/domain"
+	"golang-basic/usecase"
+	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -28,15 +29,18 @@ func (c *UserController) GetUser(ctx *gin.Context) {
 }
 
 func (c *UserController) CreateUser(ctx *gin.Context) {
-	user := domain.User{}
-	if !bindJSON(ctx, &user) {
+	user := user2.CreateUserReq{}
+	err := ctx.ShouldBindJSON(&user)
+	if err != nil {
+		res := ctx.Error(err).SetType(gin.ErrorTypeBind)
+		log.Printf("Error: %v", res)
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": http.StatusText(http.StatusBadRequest),
+		})
 		return
 	}
-
-	err := c.Usecase.CreateUser(ctx, user)
-	if checkError(ctx, err) {
-		return
-	}
-
-	response.OK(ctx, nil)
+	c.Usecase.CreateUser(ctx, user)
+	ctx.JSON(http.StatusCreated, gin.H{
+		"message": http.StatusText(http.StatusCreated),
+	})
 }

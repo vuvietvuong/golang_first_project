@@ -2,12 +2,11 @@ package controller
 
 import (
 	"fmt"
-	user2 "golang-basic/domain"
-	"golang-basic/usecase"
-	"golang-basic/pkg/response"
-	"log"
-	"net/http"
 	"golang-basic/config"
+	user2 "golang-basic/domain"
+	"golang-basic/pkg/response"
+	"golang-basic/usecase"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

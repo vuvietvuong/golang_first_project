@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -16,7 +15,8 @@ func init() {
 }
 
 func Setup() {
-	fmt.Println("Initial configuration")
+	setEnv()
+	setGinMode()
 }
 
 func PrivateKey() []byte {

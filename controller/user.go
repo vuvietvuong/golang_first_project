@@ -1,10 +1,12 @@
 package controller
 
 import (
+	"fmt"
 	user2 "golang-basic/domain"
 	"golang-basic/usecase"
 	"log"
 	"net/http"
+	"peanut/config"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -15,6 +17,7 @@ type UserController struct {
 }
 
 func NewUserController(db *gorm.DB) *UserController {
+	fmt.Println(config.IsDevelopment())
 	return &UserController{
 		Usecase: usecase.NewUserUsecase(db),
 	}

@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"peanut/pkg/apierrors"
+	"golang-basic/pkg/apierrors"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

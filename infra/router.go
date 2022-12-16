@@ -57,6 +57,15 @@ func SetupServer(s *gorm.DB) Server {
 			// users.PATCH("/:id", userCtrl.UpdateUser)
 			// users.DELETE("/:id", userCtrl.DeleteUserByID)
 		}
+		bookCtrl := controller.NewBookController(s)
+		books := v1.Group("/books").Use(middleware.JWTAuthMiddleware())
+		{
+			books.GET("", bookCtrl.GetBooks)
+			books.POST("", bookCtrl.CreateBook)
+			books.GET("/:id", bookCtrl.GetBook)
+			books.PUT("/:id", bookCtrl.EditBook)
+			books.DELETE("/:id", bookCtrl.DeleteBook)
+		}
 	}
 
 	// health check

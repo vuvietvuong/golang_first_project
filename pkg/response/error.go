@@ -3,9 +3,9 @@ package response
 import (
 	"errors"
 	"fmt"
-	"peanut/domain"
-	"peanut/pkg/apierrors"
-	"peanut/pkg/i18n"
+	"golang-basic/domain"
+	"golang-basic/pkg/apierrors"
+	"golang-basic/pkg/i18n"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

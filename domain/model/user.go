@@ -10,3 +10,11 @@ type User struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
+
+type Book struct {
+	ID        uint `gorm:"primaryKey"`
+	Name      string
+	UserId    int `gorm:"column:user_id"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}

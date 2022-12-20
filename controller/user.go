@@ -6,6 +6,7 @@ import (
 	user2 "golang-basic/domain"
 	"golang-basic/pkg/response"
 	"golang-basic/usecase"
+	"golang-basic/repository"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -19,7 +20,7 @@ type UserController struct {
 func NewUserController(db *gorm.DB) *UserController {
 	fmt.Println(config.IsDevelopment())
 	return &UserController{
-		Usecase: usecase.NewUserUsecase(db),
+		Usecase: usecase.NewUserUsecase( repository.NewUserRepo(db)),
 	}
 }
 

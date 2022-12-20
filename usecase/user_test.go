@@ -6,18 +6,18 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"golang-basic/domain"
+	"golang-basic/domain/model"
 )
 
 var _ = Describe("User", func() {
-	var u, createdU domain.User
+	var u, createdU model.User
 	BeforeEach(func() {
-		u = domain.User{
+		u = model.User{
 			ID:       1,
 			Username: "hung",
 			Email:    "hung@example.com",
 		}
-		createdU = domain.User{}
+		createdU = model.User{}
 	})
 
 	Describe("API Create", func() {

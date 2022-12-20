@@ -6,8 +6,6 @@ import (
 	"golang-basic/domain/model"
 	"golang-basic/pkg/crypto"
 	"golang-basic/repository"
-
-	"gorm.io/gorm"
 )
 
 type UserUsecase interface {

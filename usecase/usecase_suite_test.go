@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"peanut/repository/mock"
-	"peanut/usecase"
+	"golang-basic/repository/mock"
+	"golang-basic/usecase"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/golang/mock/gomock"
